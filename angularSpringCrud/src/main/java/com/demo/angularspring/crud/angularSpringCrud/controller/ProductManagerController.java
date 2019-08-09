@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.demo.angularspring.crud.angularSpringCrud.entity.ProductEntity;
 import com.demo.angularspring.crud.angularSpringCrud.service.CategoryService;
@@ -90,5 +93,25 @@ public class ProductManagerController {
 		productService.removeProduct(deletedProductEntity);
 		return new ResponseEntity<>(deletedProductEntity,HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("/products/getImageProduct/{id}")
+	public ResponseEntity<List<String>> getImageProduct(@PathVariable("id") int id){
+		List<String> listImageProduct = productService.getImage(id);
+		if(listImageProduct.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(listImageProduct,HttpStatus.OK);
+	}
+	
+	@PostMapping("/products/uploadImgProduct")
+	public ResponseEntity<String> uploadImgProduct(@RequestParam("profile") MultipartFile[] files, @RequestParam("idproduct") int id){
+		if(files.length == 0) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		productService.uploadSaveImage(files, id);
+		return new ResponseEntity<>("Done",HttpStatus.OK);
+	}
+	
 	
 }

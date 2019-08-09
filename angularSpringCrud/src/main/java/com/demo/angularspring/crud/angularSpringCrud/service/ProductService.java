@@ -2,8 +2,8 @@ package com.demo.angularspring.crud.angularSpringCrud.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.demo.angularspring.crud.angularSpringCrud.entity.ProductEntity;
 
@@ -20,4 +20,7 @@ public interface ProductService {
 	
 	void removeProduct(ProductEntity productEntity);
 	
+	List<String> getImage (int id);
+	
+	void uploadSaveImage (MultipartFile[] files, int id);
 }

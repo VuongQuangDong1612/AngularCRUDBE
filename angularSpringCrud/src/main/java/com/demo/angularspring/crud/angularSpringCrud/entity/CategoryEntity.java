@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
@@ -28,6 +29,7 @@ public class CategoryEntity {
 	private String name;
 
 	@OneToMany(mappedBy="categoryEntity")
+	@JsonIgnore
 	private Set<ProductEntity> productEntities;
 	
 	

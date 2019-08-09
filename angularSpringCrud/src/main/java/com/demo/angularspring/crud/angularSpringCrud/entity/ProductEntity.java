@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.PreRemove;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "Product")
@@ -43,6 +45,7 @@ public class ProductEntity {
 	private CategoryEntity categoryEntity;
 	
 	@OneToMany(mappedBy="productEntity")
+	@JsonIgnoreProperties(value="productEntity")
 	private Set<Image> images;
 	
 	public ProductEntity() {
