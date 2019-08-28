@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "springCrud.app.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'springCrud.app.jwtSecret'"
+  },
+  {
+    "name": "springCrud.app.jwtExpiration",
+    "type": "java.lang.String",
+    "description": "A description for 'springCrud.app.jwtExpiration'"
+  },
+  {
+    "name": "springCrud.app.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'springCrud.app.jwtSecret'"
+  },
+  {
+    "name": "springCrud.app.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'springCrud.app.jwtSecret'"
+  }
+]}
