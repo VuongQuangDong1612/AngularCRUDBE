@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -16,4 +17,9 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Integer
 	
 	@Query(nativeQuery = true, value= "SELECT coalesce(max(pro.id), 0) FROM Product pro")
 	int getMaxId();
+	
+	@Modifying
+	@Query(nativeQuery = true, value= "UPDATE Product SET amount = 100  WHERE id = ?1")
+	void deleteManyProduct(int id);
+	
 }

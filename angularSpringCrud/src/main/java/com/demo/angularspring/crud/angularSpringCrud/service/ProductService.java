@@ -23,4 +23,6 @@ public interface ProductService {
 	List<String> getImage (int id);
 	
 	void uploadSaveImage (MultipartFile[] files, int id);
+	
+	void removeManyProduct(int id);
 }

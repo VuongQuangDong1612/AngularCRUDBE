@@ -1,11 +1,8 @@
 package com.demo.angularspring.crud.angularSpringCrud.security.jwt;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.security.Key;
 import java.util.Date;
 
-import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,10 +11,13 @@ import org.springframework.stereotype.Component;
 
 import com.demo.angularspring.crud.angularSpringCrud.security.service.UserPrinciple;
 
-
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.security.WeakKeyException;
 
 
 @Component
@@ -46,6 +46,9 @@ public class JwtProvider {
 	
 	public boolean validateJwtToken(String authToken) {
         try {
+        	System.out.println("----------------------------------------------------");
+        	System.out.println("----------------------------------------------------");
+        	System.out.println("----------------------------------------------------");
             Jwts.parser().setSigningKey(convertToKey(this.jwtSecret)).parseClaimsJws(authToken);
             return true;
         } catch (MalformedJwtException e) {

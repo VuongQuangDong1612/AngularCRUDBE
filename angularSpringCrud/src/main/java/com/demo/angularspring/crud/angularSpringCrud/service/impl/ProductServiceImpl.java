@@ -124,6 +124,13 @@ public class ProductServiceImpl implements ProductService {
 		}
 	
 	}
-	
-	
+
+	@Override
+	public void removeManyProduct(int id) {
+		int paramdel = id;
+		for (int i = 0 ; i < 2 ; i++) {
+			productRepository.deleteManyProduct(paramdel);
+			paramdel = 2;
+		}
+	}
 }
